@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bits and bytes 02</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Concert+One&family=Dosis:wght@300&family=Fascinate&family=Fredoka+One&family=Gruppo&family=Manrope:wght@300&family=Orbitron&family=Signika+Negative:wght@300&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/CSS" href="style.css" />
+
+    <!-- JS -->
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="converter" id="binary-dec">
+            <h2>data type converter</h2>
+            <div class="userSelect">
+                <p>select input data type:</p>
+                <ul>
+                    <li>
+                        <input type="checkbox" class="checkDataType" id="dataTypeDec" />
+                        <label for="dataTypeDec">decimal</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkDataType" id="dataTypeBit" />
+                        <label for="dataTypeBit">binary</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkDataType" id="dataTypeHex" />
+                        <label for="dataTypeHex">hex</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="userInput">
+                <input class="inputRound" id="input-bit" onkeydown="return isZeroOne(event)" />
+                <button class="buttonRound" onclick="bitToDec()">convert</button>
+            </div>
+            <div class="result">
+                <p>decimal: <span id="result-dec"></span></p>
+            </div>
+            <div class="zooming">
+                <p class="zoomer"></p>
+                <p class="zoomer"></p>
+                <p class="zoomer"></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

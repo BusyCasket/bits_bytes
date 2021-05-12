@@ -1,0 +1,253 @@
+/*
+Fonts
+====================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Dosis:wght@300&family=Fascinate&family=Fredoka+One&family=Gruppo&family=Manrope:wght@300&family=Orbitron&family=Signika+Negative:wght@300&display=swap');
+
+.font-FredokaOne {
+    font-family: 'Fredoka One', cursive;
+}
+
+.font-ConcertOne {
+    font-family: 'Concert One', cursive;
+}
+
+.font-Dosis {
+    font-family: 'Dosis', sans-serif;
+}
+
+.font-Fascinate {
+    font-family: 'Fascinate', cursive;
+}
+
+.font-Gruppo {
+    font-family: 'Gruppo', cursive;
+}
+
+.font-Manrope {
+    font-family: 'Manrope', sans-serif;
+}
+
+.font-Orbitron {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.font-SignikaNegative {
+    font-family: 'Signika Negative', sans-serif;
+}
+
+/*
+Variables
+====================
+*/
+
+:root {
+    /* Colors */
+    --light-blue: rgb(230, 240, 255);
+    --medium-blue: rgb(104, 144, 184);
+    --dark-blue: rgb(53, 85, 117);
+    --light-purple: rgb(192, 179, 221);
+    --medium-purple: rgb(126, 110, 163);
+    /* Layout */
+    --gap: 2rem;
+    /* Time */
+    --duration: 6s;
+}
+
+/*
+Layout
+====================
+*/
+
+/*
+Layout - general
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Concert One', cursive;
+}
+
+/*
+Layout - general
+*/
+
+.wrapper {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: var(--light-blue);
+}
+
+/*
+Layout - converter
+*/
+
+.converter {
+    padding: var(--gap);
+    margin: var(--gap);
+    border-radius: var(--gap);
+    background-color: var(--medium-blue);
+    box-shadow: 5px 0 0 var(--medium-purple);
+    position: relative;
+}
+
+.converter::before {
+    position: absolute;
+    right: var(--gap);
+    top: calc((var(--gap) * -1));
+    font-family: 'Fredoka One', cursive;
+    font-size: calc(var(--gap) * 1.5);
+    color: var(--dark-blue);
+    text-shadow: 3px 0px 0px var(--medium-purple);
+}
+
+.converter *:not(:nth-child(1)) {
+    margin-top: calc(var(--gap) * .5);
+}
+
+.converter#binary-dec::before {
+    content: '1011';
+}
+
+.converter#dec-binary::before {
+    content: 'dec';
+}
+
+input.inputRound,
+button.buttonRound {
+    border: none;
+    outline: none;
+    padding: calc(var(--gap) * .25);
+    border-radius: calc(var(--gap) * .25);
+    font-size: 1rem;
+}
+
+input.inputRound {
+    box-shadow: inset 3px 0 0 var(--medium-purple);
+}
+
+button.buttonRound {
+    min-width: 60px;
+    background-color: var(--light-blue);
+    box-shadow: 3px 0 0 var(--medium-purple);
+    color: var(--dark-blue);
+    cursor: pointer;
+}
+
+button.buttonRound:active {
+    background-color: var(--dark-blue);
+    box-shadow: 0 0 0 var(--medium-purple);
+    color: var(--light-blue);
+    transform: translateX(3px);
+}
+
+/*
+Layout - converter - animations
+*/
+
+.zoomer {
+    position: absolute;
+    color: var(--dark-blue);
+    opacity: 0;
+}
+
+.zoomer::before {
+    content: '10110101';
+    animation: bitRandom 1.5s infinite linear;
+}
+
+@keyframes bitRandom {
+    0% {
+        content: '10110101';
+    }
+    25% {
+        content: '10001001';
+    }
+    50% {
+        content: '11110101';
+    }
+    75% {
+        content: '01001010';
+    }
+    100% {
+        content: '11000001';
+    }
+}
+
+.zoomer:nth-child(1) {
+    font-family: 'Dosis', sans-serif;
+    top: -5%;
+    left: 10%;
+    animation: zoomTopLeft var(--duration) infinite linear;
+}
+
+@keyframes zoomTopLeft {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -25%) scale(1.25);
+        opacity: .9;
+    }
+    100% {
+        transform: translate(-100%, -50%) scale(1.5);
+        opacity: 0;
+        animation-timing-function: ease-out;
+    }
+}
+
+.zoomer:nth-child(2) {
+    font-family: 'Orbitron', sans-serif;
+    bottom: 0;
+    left: 20%;
+    animation: zoomBottomLeft var(--duration) infinite linear;
+    animation-delay: 1s;
+}
+
+@keyframes zoomBottomLeft {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, 30%) scale(1.25);
+        opacity: .9;
+    }
+    100% {
+        transform: translate(-100%, 60%) scale(1.5);
+        opacity: 0;
+        animation-timing-function: ease-out;
+    }
+}
+
+.zoomer:nth-child(3) {
+    font-family: 'Signika Negative', sans-serif;
+    bottom: 10%;
+    right: 20%;
+    animation: zoomBottomRight var(--duration) infinite linear;
+    animation-delay: 2s;
+}
+
+@keyframes zoomBottomRight {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(50%, 30%) scale(1.25);
+        opacity: .9;
+    }
+    100% {
+        transform: translate(100%, 60%) scale(1.5);
+        opacity: 0;
+        animation-timing-function: ease-out;
+    }
+}
