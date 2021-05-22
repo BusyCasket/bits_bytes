@@ -14,25 +14,8 @@ activeType = boxes.find((box) => box.checked).getAttribute('id');
 console.log('initial activeType', activeType);
 // set active type according to checked box
 
-const ticking = (id) => {
-  boxes.forEach((box) => {
-    if (box.getAttribute('id') !== id) {
-      box.checked = 0;
-      // every box that was not clicked will be cleared
-    }
-  });
-};
-
 boxes.map((box) => {
   box.addEventListener('change', (e) => {
-    if (!e.target.checked) {
-      console.log('already checked');
-      e.target.checked = 1;
-      return;
-    }
-    // set clicked checkbox back to checked if it would change to "not checked"
-    // so one box is always ticked
-
     const id = e.target.getAttribute('id');
     console.log('checkbox changed', id, typeof id);
     // get elements id attribute as string
@@ -40,9 +23,6 @@ boxes.map((box) => {
     activeType = id;
     console.log('activeType', activeType);
     // set activeType to type of clicked checkbox
-
-    ticking(id);
-    // pass this string to helper function taking care of ticking the boxes
   });
 });
 
@@ -287,7 +267,10 @@ const decToOther = (decimal, base) => {
   return resultOther;
 };
 
-const convert = () => {
+const convert = (e) => {
+  e.preventDefault();
+  // prevent submit default
+
   const inputString = inputConvert.value;
   console.log('inputString', inputString, typeof inputString);
   // get input value as string

@@ -26,9 +26,9 @@
         <!-- undesplayed checkboxes only for (styling) logic -->
         <!-- have to be siblings to .converter in order for css selectors to work together -->
         <!-- labels for them are displayed -->
-        <input type="checkbox" class="checkDataType" id="dataTypeDec" />
-        <input type="checkbox" class="checkDataType" id="dataTypeBit" checked />
-        <input type="checkbox" class="checkDataType" id="dataTypeHex" />
+        <input type="radio" name="dataType" class="checkDataType" id="dataTypeDec" />
+        <input type="radio" name="dataType" class="checkDataType" id="dataTypeBit" checked />
+        <input type="radio" name="dataType" class="checkDataType" id="dataTypeHex" />
 
         <!-- converter -->
         <div class="converter" id="binary-dec">
@@ -48,8 +48,10 @@
             </ul>
           </div>
           <div class="userInput">
-            <input class="inputRound" id="inputConvert" oninput="checkInput(event)" />
-            <button class="buttonRound" onclick="convert()">convert</button>
+            <form id="formInput" onsubmit="convert(event)">
+              <input class="inputRound" id="inputConvert" oninput="checkInput(event)" />
+            </form>
+            <button type="submit" form="formInput" class="buttonRound">convert</button>
           </div>
           <div class="result">
             <p>decimal: <span id="result-dec"></span></p>
